@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
       end
 
       format.html do
-        render({ template: "movies/index" })
+        render template: "movies/index"
       end
     end
   end
@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
 
     @the_movie = matching_movies.first
 
-    render({ template: "movies/show" })
+    render template: "movies/show" 
   end
 
   def create
@@ -38,7 +38,7 @@ class MoviesController < ApplicationController
 
     if @the_movie.valid?
       @the_movie.save
-      redirect_to("/movies", { notice: "Movie was successfully created." })
+      redirect_to movies_url, notice: "Movie was successfully created."
     else
       render template: "movies/new"
     end
